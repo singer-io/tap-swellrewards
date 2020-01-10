@@ -4,7 +4,7 @@ import json
 import singer
 from singer import utils, metadata
 
-REQUIRED_CONFIG_KEYS = ["start_date", "username", "password"]
+REQUIRED_CONFIG_KEYS = ["last_seen_at", "api_key", "api_guid"]
 LOGGER = singer.get_logger()
 
 def get_abs_path(path):

@@ -1,0 +1,142 @@
+{
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "total_spend_cents": {
+      "type": "integer"
+    },
+    "total_purchases": {
+      "type": "integer"
+    },
+    "perks_redeemed": {
+      "type": "integer"
+    },
+    "last_purchase_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "points_earned": {
+      "type": "integer"
+    },
+    "points_balance": {
+      "type": "integer"
+    },
+    "points_expire_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "last_seen_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "third_party_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pos_account_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "has_store_account": {
+      "type": "boolean"
+    },
+    "birthday_month": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "birth_day": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "birthday_year": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "vip_tier_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "vip_tier_entry_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "vip_tier_expiration": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "vip_tier_maintenance_requirements": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "points_needed": {
+          "type": "integer"
+        },
+        "amount_cents_needed": {
+          "type": "integer"
+        },
+        "purchases_needed": {
+          "type": "integer"
+        },
+        "referrals_needed": {
+          "type": "integer"
+        }
+      }
+    },
+    "vip_tier_upgrade_requirements": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "points_needed": {
+          "type": "integer"
+        },
+        "amount_cents_needed": {
+          "type": "integer"
+        },
+        "purchases_needed": {
+          "type": "integer"
+        },
+        "referrals_needed": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
