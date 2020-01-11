@@ -6,7 +6,6 @@ LOGGER = singer.get_logger()
 
 PAGE_SIZE = 100
 
-
 class Stream(object):
     def __init__(self, tap_stream_id, pk_fields, path,
                  returns_collection=True,

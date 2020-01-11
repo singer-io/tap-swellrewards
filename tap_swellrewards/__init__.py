@@ -68,7 +68,6 @@ def sync(ctx):
 def main_impl():
     args = utils.parse_args(REQUIRED_CONFIG_KEYS)
     ctx = Context(args.config, args.state)
-    ctx.client.authenticate()
     if args.discover:
         discover(ctx).dump()
         print()
