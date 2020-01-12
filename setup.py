@@ -12,6 +12,7 @@ setup(
     install_requires=[
         "singer-python>=5.0.12",
         "requests",
+        "pendulum"
     ],
     entry_points="""
     [console_scripts]
