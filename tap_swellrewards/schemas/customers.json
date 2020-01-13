@@ -36,10 +36,16 @@
       "format": "date-time"
     },
     "first_name": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "last_name": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "last_seen_at": {
       "type": "string",
