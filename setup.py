@@ -4,15 +4,15 @@ from setuptools import setup
 setup(
     name="tap-swellrewards",
     version="0.1.0",
-    description="Singer.io tap for extracting data",
+    description="Singer.io tap for extracting data from Swell Rewards API",
     author="Stitch",
     url="http://singer.io",
     classifiers=["Programming Language :: Python :: 3 :: Only"],
     py_modules=["tap_swellrewards"],
     install_requires=[
-        "singer-python>=5.0.12",
-        "requests",
-        "pendulum"
+        "singer-python==5.8.1",
+        "requests==2.20.0",
+        "pendulum==1.2.0",
     ],
     entry_points="""
     [console_scripts]
