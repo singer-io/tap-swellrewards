@@ -14,7 +14,7 @@ Since package dependencies tend to conflict between various taps and targets, Si
 $ cd tap-swellrewards
 $ python3 -m venv ~/.venvs/tap-swellrewards
 $ source ~/.venvs/tap-swellrewards/bin/activate
-$ pip3 install tap-swellrewards
+$ pip3 install tap-swellrewards # or pip3 install .
 $ deactivate
 ```
 
