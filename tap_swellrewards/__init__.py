@@ -12,8 +12,8 @@ def discover(config, state={}):
     for available_stream in AVAILABLE_STREAMS:
         data['streams'].append(available_stream(config=config, state=state))
     catalog = singer.catalog.Catalog.from_dict(data=data)
-    singer.catalog.write_catalog(catalog)
     LOGGER.info('Finished discovery..')
+    return catalog
 
 
 def sync(config, catalog, state={}):
@@ -37,9 +37,15 @@ def sync(config, catalog, state={}):
 def main():
     args = singer.utils.parse_args(required_config_keys=["api_key", "api_guid", "start_date"])
     if args.discover:
-        discover(config=args.config)
+        catalog = discover(config=args.config)
+        singer.catalog.write_catalog(catalog)
     else:
-        sync(config=args.config, catalog=args.catalog, state=args.state)
+        if args.catalog:
+            catalog = args.catalog
+        else:
+            catalog = discover(args.config)
+
+        sync(config=args.config, catalog=catalog, state=args.state)
 
 
 if __name__ == "__main__":
