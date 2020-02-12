@@ -21,7 +21,7 @@ class SwellRewardsStream:
         self.params = {
             "per_page": config.get('per_page', 100),
             "page": 1,
-            "last_seen_at": config.get('last_seen_at')
+            "last_seen_at": config.get('start_date')
         }
         self.schema = self.load_schema()
         self.metadata = singer.metadata.get_standard_metadata(schema=self.load_schema(),
@@ -148,15 +148,16 @@ class CustomersStream(SwellRewardsStream):
         super().__init__(config, state)
 
     def sync(self):
+        record_metadata = singer.metadata.to_map(self.metadata)
 
-        with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"):
-            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
-                for page in self._list_resource(url_suffix="/customers/all", params=self.params):
-                    for record in page.get(self.tap_stream_id):
-                        with singer.Transformer() as transformer:
-                            transformed_record = transformer.transform(data=record, schema=self.schema)
-                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                            counter.increment()
+        with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"), \
+          singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter, \
+          singer.Transformer() as transformer:
+            for page in self._list_resource(url_suffix="/customers/all", params=self.params):
+                for record in page.get(self.tap_stream_id):
+                  transformed_record = transformer.transform(data=record, schema=self.schema, metadata=record_metadata)
+                  singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                  counter.increment()
 
 
 AVAILABLE_STREAMS = {
