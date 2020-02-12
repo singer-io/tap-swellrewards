@@ -33,7 +33,7 @@ The tap accepts a JSON-formatted configuration file as arguments. This configura
 
 1. `api_key`: A valid Swell Rewards API Key (found in the Settings of your Swell account)
 2. `api_guid`: A valid Swell Rewards API GUID (found in the Settings of your Swell account)
-3. `last_seen_at` The `last_seen_at` parameter determines the starting date for the last registered customer activity within the Yotpo loyalty and rewards system e.g. purchase, redemption, etc. For example, pass a value of `2019-01-01` to fetch active customers since January 1st, 2019. 
+3. `start_date` The `start_date` parameter determines the starting date for the last registered customer activity within the Yotpo loyalty and rewards system e.g. purchase, redemption, etc. For example, pass a value of `2019-01-01` to fetch active customers since January 1st, 2019. 
 
 An bare-bones SwellRewards confirguration may file may look like the following:
 
@@ -41,7 +41,7 @@ An bare-bones SwellRewards confirguration may file may look like the following:
 {
   "api_key": "abaoEFoiahwef12425",
   "api_guid": "YAYAHbafoiafoH235",
-  "last_seen_at": "2019-01-21"
+  "start_date": "2019-01-21"
 }
 ```
 

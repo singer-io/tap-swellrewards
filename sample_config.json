@@ -1,5 +1,5 @@
 {
   "api_key": "my_api_key",
   "api_guid": "my_guid",
-  "last_seen_at": "2017-01-01"
+  "start_date": "2017-01-01"
 }
