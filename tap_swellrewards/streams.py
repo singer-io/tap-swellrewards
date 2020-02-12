@@ -134,7 +134,7 @@ class SwellRewardsResponse:
 class CustomersStream(SwellRewardsStream):
     tap_stream_id = 'customers'
     stream = 'customers'
-    key_properties = 'email'
+    key_properties = ['email']
     valid_replication_keys = []
     replication_method = 'FULL_TABLE'
     valid_params = [
