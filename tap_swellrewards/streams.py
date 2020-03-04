@@ -26,8 +26,7 @@ class SwellRewardsStream:
         self.schema = self.load_schema()
         self.metadata = singer.metadata.get_standard_metadata(schema=self.load_schema(),
                                                               key_properties=self.key_properties,
-                                                              valid_replication_keys=self.valid_replication_keys,
-                                                              replication_method=self.replication_method)
+                                                              valid_replication_keys=self.valid_replication_keys)
 
         config_stream_params = config.get('streams', {}).get(self.tap_stream_id)
 
@@ -136,7 +135,6 @@ class CustomersStream(SwellRewardsStream):
     stream = 'customers'
     key_properties = ['email', 'last_seen_at']
     valid_replication_keys = ['last_seen_at']
-    replication_method = 'INCREMENTAL'
     valid_params = [
         'page',
         'per_page',
