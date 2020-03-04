@@ -135,7 +135,7 @@ class CustomersStream(SwellRewardsStream):
     tap_stream_id = 'customers'
     stream = 'customers'
     key_properties = ['email', 'last_seen_at']
-    valid_replication_keys = ['email', 'last_seen_at']
+    valid_replication_keys = ['last_seen_at']
     replication_method = 'INCREMENTAL'
     valid_params = [
         'page',
