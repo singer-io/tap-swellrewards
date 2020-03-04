@@ -21,7 +21,7 @@ class SwellRewardsStream:
         self.params = {
             "per_page": config.get('per_page', 100),
             "page": 1,
-            "last_seen_at": config.get('start_date')
+            "last_seen_at": singer.bookmarks.get_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key="last_seen_at", default=config.get('start_date'))
         }
         self.schema = self.load_schema()
         self.metadata = singer.metadata.get_standard_metadata(schema=self.load_schema(),
@@ -134,9 +134,9 @@ class SwellRewardsResponse:
 class CustomersStream(SwellRewardsStream):
     tap_stream_id = 'customers'
     stream = 'customers'
-    key_properties = ['email']
-    valid_replication_keys = []
-    replication_method = 'FULL_TABLE'
+    key_properties = ['email', 'last_seen_at']
+    valid_replication_keys = ['email', 'last_seen_at']
+    replication_method = 'INCREMENTAL'
     valid_params = [
         'page',
         'per_page',
@@ -148,6 +148,7 @@ class CustomersStream(SwellRewardsStream):
         super().__init__(config, state)
 
     def sync(self):
+        most_recent_date = self.params["last_seen_at"]
         record_metadata = singer.metadata.to_map(self.metadata)
 
         with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"), \
@@ -158,7 +159,10 @@ class CustomersStream(SwellRewardsStream):
                   transformed_record = transformer.transform(data=record, schema=self.schema, metadata=record_metadata)
                   singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
                   counter.increment()
+                  if transformed_record["last_seen_at"] > most_recent_date:
+                    most_recent_date = transformed_record["last_seen_at"]
 
+        singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key="last_seen_at", val=most_recent_date)
 
 AVAILABLE_STREAMS = {
     CustomersStream
