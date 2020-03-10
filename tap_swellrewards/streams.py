@@ -133,7 +133,7 @@ class SwellRewardsResponse:
 class CustomersStream(SwellRewardsStream):
     tap_stream_id = 'customers'
     stream = 'customers'
-    key_properties = ['email', 'last_seen_at']
+    key_properties = ['email']
     valid_replication_keys = ['last_seen_at']
     valid_params = [
         'page',
