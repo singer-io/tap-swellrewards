@@ -104,6 +104,26 @@
       ],
       "format": "date-time"
     },
+    "vip_tier_actions_completed": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "points_earned": {
+          "type": "integer"
+        },
+        "amount_spent_cents": {
+          "type": "integer"
+        },
+        "purchases_made": {
+          "type": "integer"
+        },
+        "referrals_completed": {
+          "type": "integer"
+        }
+      }
+    },
     "vip_tier_maintenance_requirements": {
       "type": [
         "object",
