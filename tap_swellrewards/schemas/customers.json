@@ -111,16 +111,28 @@
       ],
       "properties": {
         "points_earned": {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "amount_spent_cents": {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "purchases_made": {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "referrals_completed": {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       }
     },
