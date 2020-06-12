@@ -160,6 +160,8 @@ class CustomersStream(SwellRewardsStream):
                   if transformed_record["last_seen_at"] > most_recent_date:
                     most_recent_date = transformed_record["last_seen_at"]
 
+                singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key="last_seen_at", val=most_recent_date)
+
         singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key="last_seen_at", val=most_recent_date)
 
 AVAILABLE_STREAMS = {
