@@ -161,6 +161,7 @@ class CustomersStream(SwellRewardsStream):
                     most_recent_date = transformed_record["last_seen_at"]
 
                 singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key="last_seen_at", val=most_recent_date)
+                singer.write_state(self.state)
 
         singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key="last_seen_at", val=most_recent_date)
 
