@@ -11,7 +11,7 @@ setup(
     py_modules=["tap_swellrewards"],
     install_requires=[
         "singer-python==5.7.0",
-        "requests==2.20.0"
+        "requests==2.31.0"
     ],
     entry_points="""
     [console_scripts]
