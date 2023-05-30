@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="tap-swellrewards",
-    version="0.1.6",
+    version="0.1.7",
     description="Singer.io tap for extracting data from Swell Rewards API",
     author="Stitch",
     url="http://singer.io",
