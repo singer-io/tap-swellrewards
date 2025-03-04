@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="tap-swellrewards",
-    version="0.1.6",
+    version="0.1.7",
     description="Singer.io tap for extracting data from Swell Rewards API",
     author="Stitch",
     url="http://singer.io",
@@ -11,7 +11,7 @@ setup(
     py_modules=["tap_swellrewards"],
     install_requires=[
         "singer-python==5.7.0",
-        "requests==2.20.0"
+        "requests==2.31.0"
     ],
     entry_points="""
     [console_scripts]
